@@ -1,6 +1,10 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
+import os
+
+# --- CSV file path (define once at the top) ---
+csv_file = "cleaning_records.csv"
 
 # --- Page Title ---
 st.title("🏥 Hospital Cleaning Checklist")
@@ -43,24 +47,23 @@ if st.button("✅ Save Checklist"):
 
         # Save to CSV
         try:
-            df = pd.read_csv("cleaning_records.csv")
+            df = pd.read_csv(csv_file)
             df = pd.concat([df, pd.DataFrame([record])], ignore_index=True)
         except FileNotFoundError:
             df = pd.DataFrame([record])
 
-        df.to_csv("cleaning_records.csv", index=False)
+        df.to_csv(csv_file, index=False)
         st.success("Checklist saved successfully!")
 
 # --- View Records ---
 if st.checkbox("📋 Show Completed Records"):
-    try:
-        df = pd.read_csv("cleaning_records.csv")
+    if os.path.exists(csv_file):
+        df = pd.read_csv(csv_file)
         st.dataframe(df)
-    except FileNotFoundError:
+    else:
         st.info("No records found yet.")
 
 # --- Download CSV Button ---
-csv_file = "cleaning_records.csv"
 if os.path.exists(csv_file):
     st.download_button(
         label="📥 Download Full Checklist CSV",
