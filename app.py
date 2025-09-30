@@ -58,3 +58,15 @@ if st.checkbox("📋 Show Completed Records"):
         st.dataframe(df)
     except FileNotFoundError:
         st.info("No records found yet.")
+
+# --- Download CSV Button ---
+csv_file = "cleaning_records.csv"
+if os.path.exists(csv_file):
+    st.download_button(
+        label="📥 Download Full Checklist CSV",
+        data=open(csv_file, "rb").read(),
+        file_name="hospital_cleaning_records.csv",
+        mime="text/csv"
+    )
+else:
+    st.info("No records yet to download.")
