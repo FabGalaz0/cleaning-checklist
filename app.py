@@ -7,7 +7,7 @@ import os
 csv_file = "cleaning_records.csv"
 
 # --- Page Title ---
-st.title("🏥 Hospital Cleaning Checklist")
+st.title("🏥  Cleaning Checklist")
 
 # --- Staff & Area Selection ---
 st.sidebar.header("Cleaner Information")
