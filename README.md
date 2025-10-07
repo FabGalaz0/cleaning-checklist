@@ -1,2 +1,2 @@
 # cleaning-checklist
-Streamlit app for hospital cleaning checklist
+Streamlit app for cleaning checklist
