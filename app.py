@@ -68,7 +68,7 @@ if os.path.exists(csv_file):
     st.download_button(
         label="📥 Download Full Checklist CSV",
         data=open(csv_file, "rb").read(),
-        file_name="hospital_cleaning_records.csv",
+        file_name="cleaning_records.csv",
         mime="text/csv"
     )
 else:
